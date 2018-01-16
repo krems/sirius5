@@ -1,11 +1,12 @@
 package com.sirius.taxi;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class License {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "generator")
+    @SequenceGenerator(name = "generator", sequenceName = "license_seq")
     private int id;
     private String code;
     

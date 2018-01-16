@@ -1,13 +1,12 @@
 package com.sirius.taxi;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class Ride {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "generator")
+    @SequenceGenerator(name = "generator", sequenceName = "ride_seq")
     private int id;
     @ManyToOne
     @JoinColumn(name = "driver")

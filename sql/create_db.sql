@@ -48,3 +48,9 @@ commit;
 alter table license add column code varchar(100);
 update license set code = 'ABCDE';
 commit;
+
+create sequence car_seq;
+create sequence client_seq;
+create sequence driver_seq;
+create sequence license_seq;
+create sequence ride_seq;

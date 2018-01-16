@@ -1,11 +1,12 @@
 package com.sirius.taxi;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Client {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "generator")
+    @SequenceGenerator(name = "generator", sequenceName = "client_seq")
     private int id;
     private String name;
     private double rating;

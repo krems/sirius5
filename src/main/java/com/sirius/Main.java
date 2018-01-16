@@ -21,17 +21,17 @@ public class Main {
     }
     
     public static void main(String[] args) throws Exception {
-        createNewDriver(5, 1, 1);
-        dropCar(1);
+        createNewDriver(1, 1);
+        //        dropCar(1);
         factory.close();
     }
     
-    private static void createNewDriver(final int id, final int carId, final int licenseId) {
+    private static void createNewDriver(final int carId, final int licenseId) {
         final EntityManager manager = factory.createEntityManager();
         manager.getTransaction().begin();
         final Set<Car> cars = Collections.singleton(findCar(carId));
         final License license = findLicense(licenseId);
-        final Driver driver = new Driver().setId(id).setCars(cars).setLicense(license);
+        final Driver driver = new Driver().setCars(cars).setLicense(license);
         manager.persist(driver);
         manager.getTransaction().commit();
         manager.close();
@@ -71,7 +71,7 @@ public class Main {
     
     private static void saveCar() {
         final EntityManager manager = factory.createEntityManager();
-        final Car car = new Car().setId(1).setColor("grey").setPlate("A000AA00");
+        final Car car = new Car().setColor("grey").setPlate("A000AA00");
         manager.getTransaction().begin();
         manager.persist(car);
         manager.getTransaction().commit();

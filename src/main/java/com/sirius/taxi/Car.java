@@ -7,6 +7,8 @@ import java.util.Collection;
 @Table(name = "cars")
 public class Car {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "generator")
+    @SequenceGenerator(name = "generator", sequenceName = "car_seq")
     private Integer id;
     
     private String color;

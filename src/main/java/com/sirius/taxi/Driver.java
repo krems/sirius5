@@ -6,6 +6,8 @@ import java.util.Collection;
 @Entity
 public class Driver {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "generator")
+    @SequenceGenerator(name = "generator", sequenceName = "driver_seq")
     private int id;
     @OneToOne
     @JoinColumn(name = "license")
