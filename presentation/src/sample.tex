@@ -1,0 +1,136 @@
+\documentclass[russian,aspectratio=169,14pt]{beamer}
+
+\usetheme{ShipilevRH}
+
+\title{Работа с базами данных}
+\subtitle{JPA. Hibernate}
+\author{Валерий Алексеевич Овчинников}
+\institute{valery.ovchinnikov@phystech.edu}
+
+\begin{document}
+
+\maketitle
+
+\section{JPA}
+
+\begin{frame}
+	Java Persistence API
+	\vfill
+	\begin{enumerate}
+		\item JPA
+		\item JPAQL
+		\item ORM
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Entity}
+	Сущность, объект этого типа будет представлен строками в БД, 
+	а класс будет описывать таблицу
+	\begin{listjava}
+@Entity
+@Table
+@Id
+@Column
+@Transient
+	\end{listjava}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Entity}
+	\begin{listjava}
+@Entity
+class JavaBean {
+    @Id
+    private int id;
+    public JavaBean() {}
+
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+}
+	\end{listjava}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Configuration}
+	Хранится в resources/META-INF/persistence.xml
+	\vfill
+	\begin{listplain}
+ <persistence-unit name="com.sirius.taxi" 
+                transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider
+        </provider>
+        <properties>
+            <property name="javax.persistence.jdbc.url" 
+                 value="jdbc:postgresql://localhost/taxi"/>
+            <property name="javax.persistence.jdbc.user" 
+                 value="test"/>
+            <property name="javax.persistence.jdbc.password" 
+                 value="pass"/>
+            <property name="javax.persistence.jdbc.driver" 
+                 value="org.postgresql.Driver"/>
+	\end{listplain}
+\end{frame}
+
+
+\section*{javax.persistence}
+
+\begin{frame}[fragile]
+	\frametitle{Persistence}
+	Инициализация JPA
+	\vfill
+	\begin{listjava}
+EntityManagerFactory factory = 
+        Persistence.createEntityManagerFactory(PU);
+	\end{listjava}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{EntityManagerFactory}
+	Сессия
+	\vfill
+	\begin{listjava}
+EntityManager manager = factory.createEntityManager();
+	\end{listjava}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{EntityManager}
+	Транзакция
+	\vfill
+	\begin{listjava}
+manager.getTransaction().begin();
+manager.persist(entity);
+manager.getTransaction().commit();
+	\end{listjava}
+\end{frame}
+
+\section*{Отношения}
+
+\begin{frame}[fragile]
+	\frametitle{Relations}
+	\begin{listjava}
+@OneToOne
+@OneToMany
+@ManyToOne
+@ManyToMany
+@JoinColumn
+	\end{listjava}
+\end{frame}
+
+\section*{JPQL}
+\begin{frame}[fragile]
+Как SQL, только JPQL
+\begin{listjava}
+SELECT p from Person;
+\end{listjava}
+\end{frame}
+
+\questions
+
+\end{document}
