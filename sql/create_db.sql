@@ -18,7 +18,7 @@ create table driver (
     id int,
     license int,
     primary key (id),
-    foreign key license(id));
+    foreign key (license) references  license(id));
 
 create table ride (
     id int,
