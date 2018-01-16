@@ -2,6 +2,7 @@ package com.sirius;
 
 
 import com.sirius.taxi.Car;
+import com.sirius.taxi.Ride;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -16,9 +17,17 @@ public class Main {
     }
     
     public static void main(String[] args) throws Exception {
-        printAllCars();
-        saveCar();
+        printAllRides();
         factory.close();
+    }
+    
+    private static void printAllRides() {
+        final EntityManager manager = factory.createEntityManager();
+        final List<Ride> result = manager.createQuery("from Ride", Ride.class).getResultList();
+        for (final Ride ride : result) {
+            System.out.println(ride);
+        }
+        manager.close();
     }
     
     private static void printAllCars() {

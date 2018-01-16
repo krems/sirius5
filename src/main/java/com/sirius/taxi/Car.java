@@ -12,7 +12,7 @@ public class Car {
     private Integer id;
     
     private String color;
-    @Column(name = "number")
+    @Column(name = "lplate")
     private String plate;
     
     public Integer getId() {
