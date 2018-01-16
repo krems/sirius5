@@ -1,9 +1,7 @@
 package com.sirius.taxi;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 public class Driver {
@@ -12,6 +10,9 @@ public class Driver {
     @OneToOne
     @JoinColumn(name = "license")
     private License license;
+    
+    @ManyToMany
+    private Collection<Car> cars;
     
     public int getId() {
         return id;
@@ -35,6 +36,7 @@ public class Driver {
         return "Driver{" +
                 "id=" + id +
                 ", license=" + license +
+                ", cars=" + cars +
                 '}';
     }
 }

@@ -34,3 +34,13 @@ insert into license values (1);
 insert into driver values (1, 1);
 insert into ride values (1, 1, 1, 1, 15);
 commit;
+
+
+create table driver_cars (
+    drivers_id int,
+    cars_id int,
+    foreign key (drivers_id) references driver(id),
+    foreign key (cars_id) references cars(id));
+
+insert into driver_cars values (1, 1);
+commit;

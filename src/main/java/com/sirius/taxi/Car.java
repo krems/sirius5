@@ -1,9 +1,7 @@
 package com.sirius.taxi;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 @Table(name = "cars")
@@ -14,6 +12,9 @@ public class Car {
     private String color;
     @Column(name = "lplate")
     private String plate;
+    
+    @ManyToMany(mappedBy = "cars")
+    private Collection<Driver> drivers;
     
     public Integer getId() {
         return id;
