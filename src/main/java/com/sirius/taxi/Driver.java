@@ -27,8 +27,18 @@ public class Driver {
         return license;
     }
     
-    public void setLicense(final License license) {
+    public Driver setLicense(final License license) {
         this.license = license;
+        return this;
+    }
+    
+    public Collection<Car> getCars() {
+        return cars;
+    }
+    
+    public Driver setCars(final Collection<Car> cars) {
+        this.cars = cars;
+        return this;
     }
     
     @Override

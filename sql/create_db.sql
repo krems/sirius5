@@ -44,3 +44,7 @@ create table driver_cars (
 
 insert into driver_cars values (1, 1);
 commit;
+
+alter table license add column code varchar(100);
+update license set code = 'ABCDE';
+commit;

@@ -9,7 +9,6 @@ import javax.persistence.ManyToOne;
 public class Ride {
     @Id
     private int id;
-    
     @ManyToOne
     @JoinColumn(name = "driver")
     private Driver driver;
@@ -26,40 +25,45 @@ public class Ride {
         return id;
     }
     
-    public void setId(final int id) {
+    public Ride setId(final int id) {
         this.id = id;
+        return this;
     }
     
     public Driver getDriver() {
         return driver;
     }
     
-    public void setDriver(final Driver driver) {
+    public Ride setDriver(final Driver driver) {
         this.driver = driver;
+        return this;
     }
     
     public Client getClient() {
         return client;
     }
     
-    public void setClient(final Client client) {
+    public Ride setClient(final Client client) {
         this.client = client;
+        return this;
     }
     
     public long getDuration() {
         return duration;
     }
     
-    public void setDuration(final long duration) {
+    public Ride setDuration(final long duration) {
         this.duration = duration;
+        return this;
     }
     
     public Car getCar() {
         return car;
     }
     
-    public void setCar(final Car car) {
+    public Ride setCar(final Car car) {
         this.car = car;
+        return this;
     }
     
     @Override

@@ -14,24 +14,27 @@ public class Client {
         return id;
     }
     
-    public void setId(final int id) {
+    public Client setId(final int id) {
         this.id = id;
+        return this;
     }
     
     public double getRating() {
         return rating;
     }
     
-    public void setRating(final double rating) {
+    public Client setRating(final double rating) {
         this.rating = rating;
+        return this;
     }
     
     public String getName() {
         return name;
     }
     
-    public void setName(final String name) {
+    public Client setName(final String name) {
         this.name = name;
+        return this;
     }
     
     @Override

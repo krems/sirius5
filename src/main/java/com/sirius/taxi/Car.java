@@ -43,6 +43,15 @@ public class Car {
         return this;
     }
     
+    public Collection<Driver> getDrivers() {
+        return drivers;
+    }
+    
+    public Car setDrivers(final Collection<Driver> drivers) {
+        this.drivers = drivers;
+        return this;
+    }
+    
     @Override
     public String toString() {
         return "Car{" +
